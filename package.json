@@ -1,0 +1,19 @@
+{
+  "name": "namskara-react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "App.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/dhananjaya-poojari/Namskara-React.git"
+  },
+  "author": "Dhananjaya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dhananjaya-poojari/Namskara-React/issues"
+  },
+  "homepage": "https://github.com/dhananjaya-poojari/Namskara-React#readme"
+}
