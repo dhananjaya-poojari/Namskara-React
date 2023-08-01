@@ -1,10 +1,29 @@
-import { restaurantList } from "../constants";
+import { swiggy_api_URL, restaurantList } from "../constants";
 import RestuarantCard from "./RestuarantCard";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Shimmer from "./Shimmer";
 
 const Body = () => {
-  const [restaurants, setRestaurants] = useState(restaurantList());
+  const [restaurants, setRestaurants] = useState([]);
+  const [filteredRestaurant, setFilteredRestaurant] = useState([]);
   const [searchTxt, setSearchText] = useState("");
+  const data = restaurantList();
+  useEffect(() => {
+    getAllRestaurant();
+  }, []);
+
+  async function getAllRestaurant() {
+    setRestaurants(data);
+    setFilteredRestaurant(data);
+  }
+  const filterRestaurant = async () => {
+    const res = restaurants.filter(
+      (x) => !searchTxt || x.data.name.includes(searchTxt)
+    );
+    setFilteredRestaurant(res);
+  };
+  if (restaurants.length === 0) return <Shimmer />;
+
   return (
     <>
       <div className="search-container">
@@ -20,19 +39,20 @@ const Body = () => {
         <button
           className="btn"
           onClick={() => {
-            const res = restaurantList().filter(
-              (x) => !searchTxt || x.data.name.includes(searchTxt)
-            );
-            setRestaurants(res);
+            filterRestaurant();
           }}
         >
           Search
         </button>
       </div>
       <div className="restaurant-list">
-        {restaurants.map((restaurant) => (
-          <RestuarantCard {...restaurant?.data} key={restaurant?.data.id} />
-        ))}
+        {filteredRestaurant.length !== 0 ? (
+          filteredRestaurant.map((restaurant) => (
+            <RestuarantCard {...restaurant?.data} key={restaurant?.data.id} />
+          ))
+        ) : (
+          <h1>No restaurant match found</h1>
+        )}
       </div>
     </>
   );
