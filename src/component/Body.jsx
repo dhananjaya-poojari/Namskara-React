@@ -2,6 +2,7 @@ import { swiggy_api_URL, restaurantList } from "../constants";
 import RestuarantCard from "./RestuarantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [restaurants, setRestaurants] = useState([]);
@@ -48,7 +49,12 @@ const Body = () => {
       <div className="restaurant-list">
         {filteredRestaurant.length !== 0 ? (
           filteredRestaurant.map((restaurant) => (
-            <RestuarantCard {...restaurant?.data} key={restaurant?.data.id} />
+            <Link
+              to={"/restaurant/" + restaurant.data.id}
+              key={restaurant?.data.id}
+            >
+              <RestuarantCard {...restaurant?.data} />
+            </Link>
           ))
         ) : (
           <h1>No restaurant match found</h1>
