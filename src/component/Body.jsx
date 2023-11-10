@@ -3,6 +3,7 @@ import RestuarantCard from "./RestuarantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnline from "../../utils/useOnline";
 
 const Body = () => {
   const [restaurants, setRestaurants] = useState([]);
@@ -23,6 +24,10 @@ const Body = () => {
     );
     setFilteredRestaurant(res);
   };
+
+  const online = useOnline();
+  if (!online) return <h1 style={{ margin: "100px" }}>You're offiline</h1>;
+
   if (restaurants.length === 0) return <Shimmer />;
 
   return (

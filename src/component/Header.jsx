@@ -40,7 +40,9 @@ const Header = () => {
             </Link>
           </li>
           <li>
-            <i className="fa-solid fa-cart-shopping"></i>
+            <Link to="/instamart">
+            <img src="https://icons8.com/icon/Uz0dKCAVQ1LW/instant" />
+            </Link>
           </li>
           {loggedInUser ? (
             <li onClick={() => setLoggedInUser(false)}>logout</li>
