@@ -32,7 +32,7 @@ const Body = () => {
 
   return (
     <>
-      <div className="search-container">
+      <div className="search-container p-5 bg-pink-50 my-2">
         <input
           type="text"
           className="search-input"
@@ -43,7 +43,7 @@ const Body = () => {
           }}
         ></input>
         <button
-          className="btn"
+          className="btn p-2 m-2 bg-purple-500 text-white rounded-lg hover:bg-black"
           onClick={() => {
             filterRestaurant();
           }}
@@ -51,7 +51,7 @@ const Body = () => {
           Search
         </button>
       </div>
-      <div className="restaurant-list">
+      <div className="flex flex-wrap">
         {filteredRestaurant.length !== 0 ? (
           filteredRestaurant.map((restaurant) => (
             <Link
