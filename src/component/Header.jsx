@@ -1,6 +1,7 @@
 import FishLogo from "../../Icons/icons8-fish-100.png";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import UserContext from "../../utils/userContext";
 
 const Title = () => (
   <Link to="/">
@@ -10,6 +11,8 @@ const Title = () => (
 //const loggedInUser = () => true;
 const Header = () => {
   const [loggedInUser, setLoggedInUser] = useState(false);
+
+  const { user } = useContext(UserContext);
   return (
     <div className="flex justify-between bg-pink-50 shadow-inner">
       <Title />
@@ -41,13 +44,20 @@ const Header = () => {
           </li>
           <li className="px-2">
             <Link to="/instamart">
-            <img src="https://icons8.com/icon/Uz0dKCAVQ1LW/instant" />
+              <img src="https://icons8.com/icon/Uz0dKCAVQ1LW/instant" />
             </Link>
-          </li >
+          </li>
           {loggedInUser ? (
-            <li onClick={() => setLoggedInUser(false)} className="px-2">logout</li>
+            <>
+              <span>{user.name}</span>
+              <li onClick={() => setLoggedInUser(false)} className="px-2">
+                logout
+              </li>
+            </>
           ) : (
-            <li onClick={() => setLoggedInUser(true)} className="px-2">login</li>
+            <li onClick={() => setLoggedInUser(true)} className="px-2">
+              login
+            </li>
           )}
         </ul>
       </div>
