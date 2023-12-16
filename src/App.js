@@ -5,11 +5,14 @@ import Body from "./component/Body";
 import Footer from "./component/Footer";
 import Error from "./component/Error";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
-import Contact from "./component/Contact";
+import Contact from "./component/Redux";
 import RestaurantDetails from "./component/RestaurantDetails";
 import Profile from "./component/Profile";
 import ProfileClass from "./component/ProfileClass";
-import userContext from "../utils/userContext";
+import UserContext from "../utils/userContext";
+import { Provider } from "react-redux";
+import store from "../utils/store";
+
 const InstaMart = lazy(() => import("./component/InstaMart"));
 const About = lazy(() => import("./component/About"));
 
@@ -19,13 +22,13 @@ const AppLayout = (props) => {
     email: "44robin.rs@gmail.com",
   });
   return (
-    <>
-      <userContext.Provider value={{ user: user, setUser: setUser }}>
+    <Provider store={store}>
+      <UserContext.Provider value={{ user: user, setUser: setUser }}>
         <Header />
         <Outlet />
         <Footer />
-      </userContext.Provider>
-    </>
+      </UserContext.Provider>
+    </Provider>
   );
 };
 
