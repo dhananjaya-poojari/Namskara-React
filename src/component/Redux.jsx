@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { addItem, removeItem } from "../../utils/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { greenButton, nameInput, redButton } from "../../utils/Style";
 
 const Contact = () => {
   const dispatch = useDispatch();
@@ -14,10 +15,11 @@ const Contact = () => {
         type="text"
         value={name}
         placeholder="Name"
+        className={nameInput}
         onChange={(e) => setName(e.target.value)}
       />
       <button
-        className="bg-green-500 mr-10 ml-10"
+        className={greenButton}
         onClick={() => {
           if (name) dispatch(addItem(name));
           setName("");
@@ -30,7 +32,7 @@ const Contact = () => {
         <div key={index}>
           {x}
           <button
-            className="bg-red-500 ml-10"
+            className={redButton}
             onClick={() => {
               dispatch(removeItem(x));
             }}

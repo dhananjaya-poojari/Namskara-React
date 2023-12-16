@@ -1,6 +1,4 @@
 import { useState } from "react";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faArrowDown, faArrowUp } from "@fortawesome/free-solid-svg-icons";
 
 const Section = ({ title, description, isVisible, setIsvisible }) => {
   //   const [isVisible, setIsvisible] = useState(false);
@@ -20,6 +18,7 @@ const Section = ({ title, description, isVisible, setIsvisible }) => {
 
 const InstaMart = () => {
   const [visibleSection, setIsVisibleSection] = useState("about");
+
   return (
     <div className="m-auto w-4/5 my-5 py-2">
       <h1 className="text-3xl font-bold">Instamart</h1>{" "}

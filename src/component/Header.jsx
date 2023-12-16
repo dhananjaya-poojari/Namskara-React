@@ -30,12 +30,7 @@ const Header = () => {
             </Link>
           </li>
           <li className="px-2">
-            <Link to="/about">
-              <img
-                src="https://img.icons8.com/fluency-systems-regular/24/null/about.png"
-                alt="About"
-              />
-            </Link>
+            <Link to="/about">Context</Link>
           </li>
           <li className="px-2">
             <Link to="/contact">Redux </Link>

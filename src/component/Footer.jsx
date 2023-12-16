@@ -3,6 +3,10 @@ import userContext from "../../utils/userContext";
 const Footer = () => {
   const { user } = useContext(userContext);
 
-  return <div className="align-center">{user.email}</div>;
+  return (
+    <div className="align-center">
+      {user.name}({user.email})
+    </div>
+  );
 };
 export default Footer;
