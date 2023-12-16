@@ -2,6 +2,7 @@ import FishLogo from "../../Icons/icons8-fish-100.png";
 import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import UserContext from "../../utils/userContext";
+import { useSelector } from "react-redux";
 
 const Title = () => (
   <Link to="/">
@@ -13,6 +14,8 @@ const Header = () => {
   const [loggedInUser, setLoggedInUser] = useState(false);
 
   const { user } = useContext(UserContext);
+
+  const cartItems = useSelector((store) => store.cart.items);
   return (
     <div className="flex justify-between bg-pink-50 shadow-inner">
       <Title />
@@ -35,12 +38,8 @@ const Header = () => {
             </Link>
           </li>
           <li className="px-2">
-            <Link to="/contact">
-              <img
-                src="https://img.icons8.com/fluency-systems-regular/24/null/contact-card.png"
-                alt="Contact"
-              />
-            </Link>
+            <Link to="/contact">Redux </Link>
+            <span>{cartItems.length}</span>
           </li>
           <li className="px-2">
             <Link to="/instamart">
